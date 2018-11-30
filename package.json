@@ -1,0 +1,27 @@
+{
+  "name": "deathblow",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "babel": "./node_modules/.bin/babel ./src --experimental --source-maps-inline -d ./dist",
+    "webpack": "./node_modules/.bin/webpack",
+    "build": "npm run babel && npm run webpack"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0",
+    "node-sass-middleware": "0.11.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "jquery": "^3.3.1",
+    "restify": "^7.2.1",
+    "webpack": "^4.23.0",
+    "webpack-cli": "^3.1.2"
+  }
+}
