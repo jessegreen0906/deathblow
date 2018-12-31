@@ -10,24 +10,24 @@ class ClientApp {
 	startNewGame() {
 		Logger.debugLog('Starting game');
 		this.requestNewSessionId();
-		Logger.debugLog('Session id: '+this.sessionId);
+
+		this.showCharacterCreationScreen();
 	}
 
 	requestNewSessionId() {
 		Logger.debugLog('Requesting new session from the server');
-		//TODO: Make request for sessionID.
-		var self = this;
-		var reqCompleted = false;
-		var response = async function() {
-			return await fetch('http://localhost:9001/newSession', {
-				mode: "no-cors"
-			});
-		};
-		self.sessionId = response;
-		Logger.debugLog('New SessionID stored: '+self.sessionId);
-		// this.sessionId = 1;
+		fetch('http://localhost:9001/newSession', {
+		}).then(res =>
+			res.json()
+		).then(body => {
+			this.sessionId = body;
+		});
 	}
 
+	showCharacterCreationScreen() {
+		$(".ui-screen.character-creation").css('display','block');
+		$(".ui-screen").not('.character-creation').css('display', 'none');
+	}
 }
 
 document.getElementById('new-game').addEventListener('click', ()=>{

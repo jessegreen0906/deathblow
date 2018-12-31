@@ -4,11 +4,94 @@
 	<meta charset="UTF-8">
 	<title>DeathBlow</title>
 </head>
+<style>
+	html {
+		font-size: 26px;
+		min-height: 100%;
+		min-width: 100%;
+	}
+
+	body {
+		height: 100%;
+		width: 100%;
+	}
+
+	.ui-screen {
+		display: none;
+	}
+
+	.ui-screen.start-screen {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	
+	@-webkit-keyframes background-flash {
+		/*0% {opacity: 0.8}*/
+		/*100% { opacity: 0.2}*/
+
+		0%, 20%, 40%, 60%, 80%, 100% {background: yellow}
+		10% {background: deepskyblue}
+		30% {background: mediumpurple}
+		50% {background: lime}
+		70% {background: orangered}
+		90% {background: hotpink}
+	}
+
+	body {
+		animation: 2s background-flash infinite;
+	}
+
+	.ui-screen.start-screen h1 {
+		font-family: edit-undo-line;
+		font-size: 3rem;
+		line-height: 2rem;
+
+		text-align: center;
+	}
+
+	@font-face {
+		font-family: "edit-undo-line";
+		src: url("../media/fonts/edunline.ttf");
+	}
+
+	button {
+		background: transparent;
+		border: black ridge 3px;
+		border-radius: 20%;
+		font-size: 1rem;
+		padding: 0.25rem 0.40rem;
+		cursor: pointer;
+		margin: 0.25rem 0;
+	}
+
+	button:focus,
+	button:hover {
+		background: white;
+	}
+
+	button.disabled {
+		color: grey;
+		border-color: grey;
+		cursor: not-allowed;
+		border-style: solid;
+	}
+
+</style>
 <body>
-	<h1>DeathBlow</h1>
+<div class="start-screen ui-screen">
+	<h1>Death<br />
+		Blow</h1>
 
-<button id="new-game">New game</button>
+	<button id="new-game">New game</button>
+	<button id="join-game" class="disabled">Join game</button>
+</div>
+<div class="character-creation ui-screen">
+	<h2>Create your character</h2>
+</div>
 
-<script src="../../../build/main.js" type="application/javascript"></script>
+<script src="./jquery-3.3.1.min.js"></script>
+<script src="../../../build/client.main.js" type="application/javascript"></script>
 </body>
 </html>
